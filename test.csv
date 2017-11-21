@@ -1,3 +1,7 @@
 A,B,C,D
-D,A,B,C
+A,D,B,C
 C,D,B,A
+C,B,D,A
+D,B,A,C
+D,A,C,B
+B,A,D,C
