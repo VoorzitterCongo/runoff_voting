@@ -70,3 +70,4 @@ def get_first(board_lst, dat_lst, n_votes, board_names):
 
 
         # print('jeej')
+def get_winner(board_lst, dat_lst, n_votes, board_names):

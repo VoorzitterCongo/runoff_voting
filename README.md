@@ -7,3 +7,5 @@ prompts for board names in csv file
 # To Do:
 - vote log
 - implement pyforms (interface)
+- blanco/onthouden
+- bij gelijk spel
