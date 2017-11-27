@@ -15,13 +15,22 @@ def import_data(file_name):
     board_len = len(board_names)
     board_lst = [0] * board_len
     ballot_num = 0
+    blanco_num = 0
+    abst_num = 0
     for row in data:
+        temp_ballot = set(row)
         print(row)
-        if all(board in board_names for board in row) == True:
-            idx_name = board_names.index(row[0])
-            board_lst[idx_name] += 1
+        if board_len == 1:
+            if row[0] == 'bl':
+                blanco_num += 1
+            elif row[0] == 'oh':
+                abst_num += 1
+        elif board_len ==  len(temp_ballot):
+            if all(board in board_names for board in row) == True:
+                idx_name = board_names.index(row[0])
+                board_lst[idx_name] += 1
         else:
-            sys.exit('row '+str(ballot_num)+': invalid board name')
+            sys.exit('row '+str(ballot_num)+': invalid ballot')
 
         dat_lst.append(row)
 
@@ -55,8 +64,10 @@ def get_winner(board_lst, dat_lst, ballot_num, board_names):
             return 2
         elif len(min_loc) != len(board_names):
             loser = [board for board in board_names]
-            loser = board_names[min_loc]
-            print(loser)
+            print(min_loc)
+            loser = [board_names[loc] for loc in min_loc]
+            # loser = board_names[min_loc]
+            print('lame', loser)
             # print(loser, board_names)
             new_names = board_names
             del new_names[min_loc[0]]
@@ -72,7 +83,7 @@ def get_winner(board_lst, dat_lst, ballot_num, board_names):
             print(new_board)
             get_winner(new_board, dat_lst, ballot_num, new_names)
         else:
-            print('alle besturen staan gelijk')
+            print('besturen staan gelijk', board_lst, board_names)
             return 3
 
 
