@@ -1,6 +1,11 @@
 A,B,C,D
 A,B,C,D
 C,D,B,A
+bl
 C,D,B,A
 D,B,A,C
+gv
 D,B,A,C
+D,A,C,B
+bl
+gv
