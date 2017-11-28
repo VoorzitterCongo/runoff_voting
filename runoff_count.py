@@ -5,6 +5,7 @@ def import_data(file_name):
     # names of boards
     board_names = ['a','b','c','d','e','f']
 
+    # opens ballot csv file
     f = open(file_name,'r')
     data = csv.reader(f, delimiter=',')
     dat_lst = []
@@ -33,6 +34,7 @@ def import_data(file_name):
 
     cor_votes = ballot_num - blanco_num
     vot_round = 1
+    print('start:', board_names, board_lst)
     won = get_winner(board_lst, dat_lst, cor_votes, board_names, vot_round)
 
 def get_winner(board_lst, dat_lst, cor_votes, board_names, vot_round):
@@ -45,7 +47,6 @@ def get_winner(board_lst, dat_lst, cor_votes, board_names, vot_round):
         return 1
 
     else:
-        print(cor_votes, board_lst, board_names)
         min_first = min(board_lst)
         min_loc = [i for i, b_num in enumerate(board_lst) if b_num == min_first]
         loser_name = [board_names[loc] for loc in min_loc]
@@ -61,11 +62,10 @@ def get_winner(board_lst, dat_lst, cor_votes, board_names, vot_round):
 
             for idx_lose, board in enumerate(board_names):
                 if idx_lose not in min_loc:
-                    print(idx_lose)
                     new_names.append(board)
                     new_lst.append(board_lst[idx_lose])
 
-            print(new_names, new_lst)
+            print('overgebleven:', new_names, new_lst)
 
             for row in dat_lst:
                 if row[0] not in new_names:
@@ -75,6 +75,7 @@ def get_winner(board_lst, dat_lst, cor_votes, board_names, vot_round):
                             break
 
             vot_round += 1
+            print('nieuw aantal stemmen:', new_names ,new_lst)
             get_winner(new_lst, dat_lst, cor_votes, new_names, vot_round)
         else:
             print('alle besturen staan gelijk', board_lst, board_names)
