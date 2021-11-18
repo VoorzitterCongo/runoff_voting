@@ -3,7 +3,7 @@ import csv, sys
 def import_data(file_name):
 
     # names of boards
-    board_names = ['a','b','c','d','e','f']
+    board_names = ['a','b','c','d','e']
 
     # opens ballot csv file
     f = open(file_name,'r')
